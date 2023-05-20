@@ -41,12 +41,16 @@ def relatorio():
     return render_template('result.html', logs_clientes=None)
 
 
-@app.route('/search/', methods=['POST'])
+@app.route('/search/', methods=['GET', 'POST'])
 def search():
-    email = request.form['email']
-    logs_clientes = LogCliente.select().where(LogCliente.email == email)
-
-    return render_template('result.html', logs_clientes=logs_clientes)
+    if request.method == 'POST':
+        email = request.form['email']
+        logs_clientes = LogCliente.select().where(LogCliente.email == email)
+        return render_template('result.html', logs_clientes=logs_clientes)
+    else:
+        # Tratamento para o método GET
+        return render_template('form.html', logs_clientes=None)
+    
 
 if __name__ == '__main__':
     create_tables()

@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pesquisa por E-mail</title>
-    <style>
-        .search-container {
-            text-align: center;
-            margin-top: 20%;
-        }
-        .search-container input[type=text] {
-            padding: 10px;
-            width: 300px;
-        }
-        .search-container button {
-            padding: 10px 20px;
-        }
-        .result-container {
-            text-align: center;
-            margin-top: 50px;
-        }
-    </style>
+    <title>Pesquisa de Usuários</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('form').submit(function(event) {
+                event.preventDefault();
+
+                var email = $('#email').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/',
+                    data: {email: email},
+                    success: function(response) {
+                        var users = response.users;
+
+                        if (users.length > 0) {
+                            var html = '';
+                            for (var i = 0; i < users.length; i++) {
+                                html += '<p>Email: ' + users[i].email + '</p>';
+                                html += '<p>Nome: ' + users[i].name + '</p>';
+                                // Adicione outros campos do usuário aqui
+                                html += '<br>';
+                            }
+                            $('#resultados').html(html);
+                        } else {
+                            $('#resultados').html('<p>Nenhum usuário encontrado.</p>');
+                        }
+                    },
+                    error: function() {
+                        $('#resultados').html('<p>Ocorreu um erro na busca.</p>');
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
-    <div class="search-container">
-        <form action="/search" method="POST">
-            <input type="text" name="email" placeholder="Digite o e-mail" required>
-            <button type="submit">Pesquisar</button>
-        </form>
-    </div>
-
-    <div class="result-container">
-        {% if users %}
-            <h2>Resultados:</h2>
-            {% for user in users %}
-                <p>Email: {{ user.email }}</p>
-                <p>Nome: {{ user.name }}</p>
-                <!-- Adicione outros campos do usuário aqui -->
-                <hr>
-            {% endfor %}
-        {% endif %}
-    </div>
+    <h1>Pesquisa de Usuários</h1>
+    <form>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+        <button type="submit">Buscar</button>
+    </form>
+    <div id="resultados"></div>
 </body>
 </html>

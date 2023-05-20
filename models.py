@@ -14,7 +14,7 @@ from peewee import *
 db = SqliteDatabase('my_database.db')
 
 class BaseModel(Model):    
-    created_at = DateTimeField(default=datetime.now)    
+    created_at = DateTimeField(default=datetime.datetime.now)   
     class Meta:
         database = db
 

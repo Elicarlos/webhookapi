@@ -48,9 +48,12 @@ class LogCliente(BaseModel):
             # wrapped block of code, the `atomic` context manager will
             # automatically call commit for us.
 
+
+
 db.connect()
 def create_tables():
     db.create_tables([
         LogCliente,
-        User,
+        User
     ])
+

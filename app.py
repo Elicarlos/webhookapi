@@ -41,6 +41,7 @@ def api():
 # auth = Auth(app, db)
 
 if __name__ == '__main__':
+    create_tables()
     # auth.User.create_table(fail_silently=True)
     app.run(debug=False)
 

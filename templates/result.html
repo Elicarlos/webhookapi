@@ -42,7 +42,7 @@
                     <td>{{ cliente.parcelas }}</td>
                     <td>{{ cliente.valor }}</td>
                     <td>{{ cliente.status }}</td> 
-                    <td>{{ cliente.created_at }}</td>                   
+                    <td>{{ cliente.created_at.strftime("%d/%m/%Y") }}</td>                   
                 </tr>
             {% endfor %}
         </table>

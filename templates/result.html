@@ -30,6 +30,7 @@
                 <th>Parcelas</th>
                 <th>Valor</th>
                 <th>Status</th>
+                <th>Data Registro</th>
 
                 <!-- Adicione outras colunas da tabela aqui -->
             </tr>
@@ -40,8 +41,8 @@
                     <td>{{ cliente.forma_pagamento }}</td>
                     <td>{{ cliente.parcelas }}</td>
                     <td>{{ cliente.valor }}</td>
-                    <td>{{ cliente.status }}</td>
-                   
+                    <td>{{ cliente.status }}</td> 
+                    <td>{{ cliente.created_at }}</td>                   
                 </tr>
             {% endfor %}
         </table>

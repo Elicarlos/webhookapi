@@ -1,5 +1,7 @@
-import datetime
 from peewee import *
+
+import datetime
+from playhouse.postgres_ext import *
 
 # db = PostgresqlDatabase(
 #     database='',
@@ -17,6 +19,9 @@ class BaseModel(Model):
     created_at = DateTimeField(default=datetime.datetime.now)   
     class Meta:
         database = db
+
+class User(BaseModel):
+    pass
 
 class LogCliente(BaseModel):
     nome = CharField(max_length=50, null=True) 
@@ -46,7 +51,6 @@ class LogCliente(BaseModel):
 db.connect()
 def create_tables():
     db.create_tables([
-        LogCliente, 
-        
-
+        LogCliente,
+        User,
     ])

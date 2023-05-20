@@ -1,6 +1,8 @@
 
 from flask import Flask, redirect, url_for, request, jsonify
 import json
+from models import *
+import pandas as pd
 # from flask import Auth
 # from flask_peewee.db import Database
 # from peewee import *
@@ -24,6 +26,9 @@ def api():
     response_str = response.decode('utf-8')
     response_json = json.loads(response_str)
     print(response_json)
+
+    df = pd.json_normalize(response_json)
+    print(df)
     
 
     return 'op'

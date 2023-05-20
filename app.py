@@ -38,11 +38,11 @@ def api():
 
 @app.route('/relatorio/', methods=['GET'])
 def relatorio():
-    return render_template('busca.html', logs_clientes=None)
+    return render_template('result.html', logs_clientes=None)
 
 
-@app.route('/buscar/', methods=['POST'])
-def buscar():
+@app.route('/search/', methods=['POST'])
+def search():
     email = request.form['email']
     try:
         logs_clientes = LogCliente.get(LogCliente.email == email)
@@ -50,7 +50,7 @@ def buscar():
     except User.DoesNotExist:
         logs_clientes = None
         
-    return render_template('busca.html', logs_clientes=logs_clientes)
+    return render_template('form.html', logs_clientes=logs_clientes)
 
 if __name__ == '__main__':
     create_tables()

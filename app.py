@@ -2,7 +2,7 @@
 from flask import Flask, redirect, url_for, request
 
 app = Flask(__name__)
-@app.route('/api', methods=['POST', 'GET'])
+@app.route('/api/', methods=['POST', 'GET'])
 def api():
     req = request.get_json() 
     print(req) 

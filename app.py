@@ -30,6 +30,17 @@ def api():
 
     return 'op'
 
+
+@app.route('/relatorio/', methods=['GET'])
+def relatorio_logs():
+    logs = LogCliente.select()
+    print(logs)
+
+    # df = pd.json_normalize(response_json)
+    # print(df)
+    
+
+    return 'relatorio'
 # auth = Auth(app, db)
 
 if __name__ == '__main__':

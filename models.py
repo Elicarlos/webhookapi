@@ -58,4 +58,3 @@ def create_tables():
         User
     ])
 
-create_tables()

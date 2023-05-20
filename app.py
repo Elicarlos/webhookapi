@@ -1,8 +1,8 @@
 
 from flask import Flask, redirect, url_for, request, jsonify
 
-from flask_peewee.auth import Auth
-from flask_peewee.db import Database
+from flask import Auth
+# from flask_peewee.db import Database
 from peewee import *
 
 # configure our database
@@ -14,7 +14,7 @@ DATABASE = {
 
 
 app = Flask(__name__)
-app.config.from_object(__name__)
+# app.config.from_object(__name__)
 
 db = Database(app)
 
@@ -26,10 +26,10 @@ def api():
 
     return 'op'
 
-auth = Auth(app, db)
+# auth = Auth(app, db)
 
 if __name__ == '__main__':
-    auth.User.create_table(fail_silently=True)
+    # auth.User.create_table(fail_silently=True)
     app.run(debug=False)
 
 

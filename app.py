@@ -1,12 +1,12 @@
 
-from flask import Flask, redirect, url_for, request
+from flask import Flask, redirect, url_for, request, jsonify
 
 app = Flask(__name__)
 @app.route('/api/', methods=['POST', 'GET'])
 def api():
-    req = request.get_json() 
-    print(req) 
-    return 'Ola mundo'
+    data = request.get_json(silent=True) 
+
+    return jsonify({data})
 
 
 

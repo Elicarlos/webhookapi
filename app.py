@@ -38,7 +38,7 @@ def api():
 
 @app.route('/relatorio/', methods=['GET'])
 def relatorio():
-    return render_template('index.html', logs_clientes=None)
+    return render_template('busca.html', logs_clientes=None)
 
 
 @app.route('/buscar/', methods=['POST'])
@@ -50,7 +50,7 @@ def buscar():
     except User.DoesNotExist:
         logs_clientes = None
         
-    return render_template('index.html', logs_clientes=logs_clientes)
+    return render_template('busca.html', logs_clientes=logs_clientes)
 
 if __name__ == '__main__':
     create_tables()

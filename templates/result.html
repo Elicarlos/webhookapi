@@ -1,18 +1,50 @@
-<!-- result.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Resultados da Pesquisa</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
     <h1>Resultados da Pesquisa</h1>
     {% if logs_clientes %}
-        {% for cliente in logs_clientes %}
-            <p>Email: {{ cliente.email }}</p>
-            <p>Nome: {{ cliente.name }}</p>
-            <!-- Adicione outros campos do usuário aqui -->
-            <br>
-        {% endfor %}
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>email</th>
+                <th>Forma de Pagamento</th>
+                <th>Parcelas</th>
+                <th>Valor</th>
+                <th>Status</th>
+
+                <!-- Adicione outras colunas da tabela aqui -->
+            </tr>
+            {% for cliente in logs_clientes %}
+                <tr>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.forma_pagamento }}</td>
+                    <td>{{ cliente.parcelas }}</td>
+                    <td>{{ cliente.valor }}</td>
+                    <td>{{ cliente.status }}</td>
+                   
+                </tr>
+            {% endfor %}
+        </table>
     {% else %}
         <p>Nenhum usuário encontrado.</p>
     {% endif %}

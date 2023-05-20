@@ -9,7 +9,6 @@ charset-normalizer==2.0.12
 click==8.0.4
 colorama==0.4.5
 cryptography==2.9.2
-cssselect==1.1.0
 dataclasses==0.8
 defusedxml==0.7.1
 eight==0.4.2
@@ -57,5 +56,4 @@ tzlocal==2.1
 urllib3==1.26.14
 w3lib==1.22.0
 Werkzeug==2.0.3
-whitenoise==5.3.0
 zipp==3.6.0

@@ -34,7 +34,8 @@ def api():
 @app.route('/relatorio/', methods=['GET'])
 def relatorio_logs():
     logs = LogCliente.select()
-    print(logs)
+    for log in logs:
+        print(log.nome)
 
     # df = pd.json_normalize(response_json)
     # print(df)

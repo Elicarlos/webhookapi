@@ -4,18 +4,9 @@ import requests
 import pandas as pd
 from flask import Flask, redirect, url_for, request, jsonify
 import json
-from . models import *
+from models import User, LogCliente, db
 from peewee import PostgresqlDatabase
 
-# from flask import Auth
-# from flask_peewee.db import Database
-# from peewee import *
-
-# configure our database
-# DATABASE = {
-#     'name': 'api.db',
-#     'engine': 'peewee.SqliteDatabase',
-# }
 
 
 

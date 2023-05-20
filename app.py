@@ -1,15 +1,15 @@
 
 from flask import Flask, redirect, url_for, request, jsonify
-
+import json
 # from flask import Auth
 # from flask_peewee.db import Database
 # from peewee import *
 
 # configure our database
-DATABASE = {
-    'name': 'api.db',
-    'engine': 'peewee.SqliteDatabase',
-}
+# DATABASE = {
+#     'name': 'api.db',
+#     'engine': 'peewee.SqliteDatabase',
+# }
 
 
 
@@ -20,9 +20,11 @@ app.config.from_object(__name__)
 
 @app.route('/api/', methods=['POST', 'GET'])
 def api():
-    data = request.data
- 
-    print(data)
+    response  = request.data
+    response_str = response.decode('utf-8')
+    response_json = json.loads(response_str)
+    print(response_json)
+    
 
     return 'op'
 

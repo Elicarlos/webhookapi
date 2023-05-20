@@ -4,7 +4,7 @@ import requests
 import pandas as pd
 from flask import Flask, redirect, url_for, request, jsonify
 import json
-from models import User, LogCliente, db
+from models import User, LogCliente, create_tables
 from peewee import PostgresqlDatabase
 
 
@@ -12,7 +12,7 @@ from peewee import PostgresqlDatabase
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-db.init_app(app)
+create_tables()
 
 
 @app.route('/api/', methods=['POST', 'GET'])

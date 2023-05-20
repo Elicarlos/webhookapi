@@ -30,8 +30,10 @@ def api():
     response_json = json.loads(response_str)
     print(response_json)
 
-    df = pd.json_normalize(response_json)
-    print(df)
+    LogCliente.insira_varios(**response_json)
+
+    # df = pd.json_normalize(response_json)
+    # print(df)
     
 
     return 'op'

@@ -20,7 +20,7 @@ app.config.from_object(__name__)
 
 @app.route('/api/', methods=['POST', 'GET'])
 def api():
-    data = request.json
+    data = request.data
  
     print(data)
 

@@ -44,13 +44,9 @@ def relatorio():
 @app.route('/search/', methods=['POST'])
 def search():
     email = request.form['email']
-    try:
-        logs_clientes = LogCliente.get(LogCliente.email == email)
-    
-    except User.DoesNotExist:
-        logs_clientes = None
-        
-    return render_template('form.html', logs_clientes=logs_clientes)
+    logs_clientes = LogCliente.select().where(LogCliente.email == email)
+
+    return render_template('result.html', logs_clientes=logs_clientes)
 
 if __name__ == '__main__':
     create_tables()

@@ -13,7 +13,7 @@ from playhouse.postgres_ext import *
 
 # db = SqliteDatabase('my_database.db')
 
-db = SqliteDatabase('my_database.db')
+db = PostgresqlDatabase('my_database.db')
 
 class BaseModel(Model):    
     created_at = DateTimeField(default=datetime.datetime.now)   

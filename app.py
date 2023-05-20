@@ -2,6 +2,7 @@ import sys
 sys.path.append('..')
 import requests
 import pandas as pd
+from flask import render_template
 from flask import Flask, redirect, url_for, request, jsonify
 import json
 from models import User, LogCliente, create_tables
@@ -13,6 +14,10 @@ from peewee import PostgresqlDatabase
 app = Flask(__name__)
 app.config.from_object(__name__)
 create_tables()
+
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('index.html')
 
 
 @app.route('/api/', methods=['POST', 'GET'])
@@ -32,17 +37,20 @@ def api():
 
 
 @app.route('/relatorio/', methods=['GET'])
-def relatorio_logs():
-    logs = LogCliente.select()
-    for log in logs:
-        print(log.nome)
+def relatorio():
+    return render_template('index.html', logs_clientes=None)
 
-    # df = pd.json_normalize(response_json)
-    # print(df)
+
+@app.route('/buscar/', methods=['POST'])
+def buscar():
+    email = request.form['email']
+    try:
+        logs_clientes = LogCliente.get(LogCliente.email == email)
     
-
-    return 'relatorio'
-# auth = Auth(app, db)
+    except User.DoesNotExist:
+        logs_clientes = None
+        
+    return render_template('index.html', logs_clientes=logs_clientes)
 
 if __name__ == '__main__':
     create_tables()

@@ -1,8 +1,11 @@
-
+import sys
+sys.path.append('..')
+import requests
+import pandas as pd
 from flask import Flask, redirect, url_for, request, jsonify
 import json
 from models import *
-import pandas as pd
+
 # from flask import Auth
 # from flask_peewee.db import Database
 # from peewee import *

@@ -21,9 +21,8 @@ from peewee import PostgresqlDatabase
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-app.config['DATABASE'] = 'postgres://fezbwxzyoxaomm:af9d542d1d6dfb27fbb44f03354672e570ec4b8b977ddf35e1f37d5108587c7d@ec2-54-208-11-146.compute-1.amazonaws.com:5432/d6vsiaan8aei2m'
+db.init_app(app)
 
-# db = Database(app)
 
 @app.route('/api/', methods=['POST', 'GET'])
 def api():

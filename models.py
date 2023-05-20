@@ -3,17 +3,18 @@ from peewee import *
 import datetime
 from playhouse.postgres_ext import *
 
-# db = PostgresqlDatabase(
-#     database='',
-#     host='', 
-#     user='', 
-#     password=''
+db = PostgresqlDatabase(
+    'd6vsiaan8aei2m',
+    user='fezbwxzyoxaomm',
+    password='af9d542d1d6dfb27fbb44f03354672e570ec4b8b977ddf35e1f37d5108587c7d',
+    host='ec2-54-208-11-146.compute-1.amazonaws.com',
+    port=5432,
+)
 
-# )
 
 # db = SqliteDatabase('my_database.db')
 
-db = PostgresqlDatabase('my_database.db')
+
 
 class BaseModel(Model):    
     created_at = DateTimeField(default=datetime.datetime.now)   
